@@ -2,7 +2,17 @@ require "test/unit"
 class ArrayTest < Test::Unit::TestCase
   
   def test_ampersand
-fail("Not Yet Implemented!")
+    a, b = [1,2,3], [4,5,6]
+    assert_equal([], a&b, "Intersection of disjoint arrays didn't produce an empty array")
+    a, b = [1,2,3], [3,4,5]
+    assert_equal([3], a&b, "Intersection of arrays with 1 common element didn't produce 1 result")
+    a, b = [1,1,1], [1,2,3]
+    assert_equal([1], a&b, "Intersection with duplicate entries did not eliminate dups")
+    a = [1,2,3]
+    assert_equal(a, a&a, "Intersection with self did not return self")
+    a = [1,1,2]
+    assert_equal([1,2], a&a, "Intersection with selfs with dups did not eliminate dups")
+    assert_equal([], a&[], "Intesection with empty array did not return empty array")
   end
   
   def test_star
