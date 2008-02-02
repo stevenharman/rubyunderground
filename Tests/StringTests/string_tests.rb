@@ -49,25 +49,55 @@ class StringTest < Test::Unit::TestCase
 		flunk("Not Yet Implemented!")
 	end
 	
+	def test_tr_bang
+		flunk("Not Yet Implemented!")
+	end
+	
 	def test_empty_bool
 		assert(!"Ruby".empty?, "String is empty")
 		assert("".empty?, "String is not empty")
 	end
-	                                             
-	def test_tr_bang
-		flunk("Not Yet Implemented!")
+	                                                                     
+	def test_eql_bool
+		a = "Ruby"
+		assert(a.eql("Ruby"), "Strings are not equal")
+		assert(!a.eql("Rox"), "Strings are equal")
 	end
 	                                                                     
-	def test_equal_bool
-		flunk("Not Yet Implemented!")
+	def test_strip
+		a = "  tk-421  "
+		assert_equal(a.strip, "tk-421", "Strings after strip are not equal")
 	end
-	                                                                  
-	def test_freeze
-		flunk("Not Yet Implemented!")
+	
+	def test_strip_bang
+		a = "  tk-421  "
+		b = "tk-421"
+		assert_equal(a.strip!, "tk-421", "Strings after strip! are not equal")
+		assert_nil(b.strip!)
 	end
-	                                                                  
+
 	def test_rstrip
-		flunk("Not Yet Implemented!")
+		a = "  tk-421  "
+		assert_equal(a.rstrip, "  tk-421", "Strings after strip are not equal")
+	end
+	
+	def test_rstrip_bang
+		a = "  tk-421  "
+		b = "tk-421"
+		assert_equal(a.rstrip!, "  tk-421", "Strings after strip! are not equal")
+		assert_nil(b.rstrip!)
+	end
+	
+	def test_lstrip
+		a = "  tk-421  "
+		assert_equal(a.lstrip, "tk-421  ", "Strings after strip are not equal")
+	end
+	                                                                     
+	def test_lstrip_bang
+		a = "  tk-421  "
+		b = "tk-421"
+		assert_equal(a.lstrip!, "tk-421  ", "Strings after strip! are not equal")
+		assert_nil(b.lstrip!)
 	end
 	                                                                  
 	def test_asterisk
@@ -201,10 +231,6 @@ class StringTest < Test::Unit::TestCase
 	def test_each_with_index
 		flunk("Not Yet Implemented!")
 	end
-	                                                         
-	def test_strip_bang
-		flunk("Not Yet Implemented!")
-	end
 	                                                                  
 	def test_id
 		flunk("Not Yet Implemented!")
@@ -317,10 +343,6 @@ class StringTest < Test::Unit::TestCase
 	def test_zip
 		flunk("Not Yet Implemented!")
 	end
-	                                                                     
-	def test_lstrip_bang
-		flunk("Not Yet Implemented!")
-	end
 	                                                                 
 	def test_type
 		flunk("Not Yet Implemented!")
@@ -367,10 +389,6 @@ class StringTest < Test::Unit::TestCase
 	end
 	                                                                   
 	def test_triple_equal
-		flunk("Not Yet Implemented!")
-	end
-	                                                                     
-	def test_strip
 		flunk("Not Yet Implemented!")
 	end
 	                                                                   
@@ -462,10 +480,6 @@ class StringTest < Test::Unit::TestCase
 		flunk("Not Yet Implemented!")
 	end
 	
-	def test_rstrip_bang
-		flunk("Not Yet Implemented!")
-	end
-	
 	def test_class
 		flunk("Not Yet Implemented!")
 	end
@@ -519,10 +533,6 @@ class StringTest < Test::Unit::TestCase
 	end
 	
 	def test_sort_by
-		flunk("Not Yet Implemented!")
-	end
-	
-	def test_lstrip
 		flunk("Not Yet Implemented!")
 	end
 	
