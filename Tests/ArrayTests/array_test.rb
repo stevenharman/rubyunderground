@@ -16,50 +16,96 @@ class ArrayTest < Test::Unit::TestCase
   end
   
   def test_star
-fail("Not Yet Implemented!")
+    a = [1,2,3]
+    assert_equal([1,2,3,1,2,3], a*2, "Doubling an array failed")
+    assert_equal([1,2,3], a*1, "Multiplying by one failed")
+    assert_equal([], []*2, "Multiplying an empty array by an integer failed")
+    
+    assert_raise ArgumentError do
+      a*-1
+    end
+    
+    assert_equal("1,2,3", a*",", "Multiplying by a comma failed")
+    assert_equal("1::2::3", a*"::", "Multiplying by a couple colons failed")
+    assert_equal("123", a*"", "Multiplying by an empty string failed")
+    assert_equal("", []*",", "Multiplying an empty array by a string failed")
   end
   
   def test_plus
-fail("Not Yet Implemented!")
+    a, b = [1,2,3], [4,5,6]
+    assert_equal([1,2,3,4,5,6], a+b, "Addition of arrays failed")
+    a, b = [1,2,3], [3,4,5]
+    assert_equal([1,2,3,3,4,5], a+b, "Addition with common elements failed")
+    assert_equal(a, a&a, "Addition with self did not equal self")
+    assert_equal(a, a+[], "Addition with empty did not produce self")
   end
   
   def test_minus
-fail("Not Yet Implemented!")
+    a, b = [1,2,3], [4,5,6]
+    assert_equal([1,2,3], a-b, "Subtraction of mismatched arrays failed")
+    a, b = [1,2,3], [3]
+    assert_equal([1,2], a-b, "Subtraction with 1 common element failed")
+    a, b = [1,2,3,3], [3]
+    assert_equal([1,2], a-b, "Subtraction with 1 element matching 2 failed")
+    a, b = [1,2,2,3], [3,1]
+    assert_equal([2,2], a-b, "Subtraction with lasting dups and ordering failed")
+    a, b = [1,2,2,3], [2,3,1]
+    assert_equal([], a-b, "Subtraction with 0 results did not give an empty array")
+    assert_equal([1,2,2,3], a-[], "Subtraction of emtpty array did not yield original")
   end
   
   def test_lt_lt
     a = [1,2,3]
     assert_equal([1,2,3,4], a<<4, "<< didn't append a number")
     assert_equal([1,2,3,4,"A"], a<<"A", "<< didn't append a string")
+    assert_equal([1,2,3,4,"A",[1,2]], a<<[1,2], "<< didn't append an array")
     assert_equal([1], []<<1, "<< didn't append on an empty array")
   end
   
   def test_ufo
-fail("Not Yet Implemented!")
+    a, b = [1,2,3], [1,2,3]
+    assert_equal(0, a<=>b, "<=> did not equate two identical arrays")
+    a, b = [1,2,3], [1,2,4]
+    assert_equal(-1, a<=>b, "<=> did not find a greater than with 1 diff integer")
+    a, b = [1,3,3], [1,2,4]
+    assert_equal(1, a<=>b, "<=> did not find a less than with 1 diff integer")
+    a, b = ["a", "b", "c"], ["a", "c", "d"]
+    assert_equal(-1, a<=>b, "<=> did not compare strings correctly")
+    a, b = [1,2,3], [1,2]
+    assert_equal(1, a<=>b, "<=> did not compare diff length arrays correctly")
+    a, b = [1,2,3], []
+    assert_equal(1, a<=>b, "<=> did not compare an empty array correctly")
   end
   
   def test_eq_eq
-fail("Not Yet Implemented!")
+    a, b = [1,2,3], [1,2,3]
+    assert(a==b, "Equality failing with same contents")
+    a, b = [1,2,3], [1,3,2]
+    assert_equal(false, a==b, "Equality failing on mis ordered arrays")
+    a, b = [1,2,3], [1,2,4]
+    assert_equal(false, a==b, "Equality failing on mis ordered arrays")
+    a, b = [], []
+    assert(a==b, "Equality failing on empty arrays")
   end
   
   def test_brackets
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_bracket_equals
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_abbrev
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_assoc
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_at
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_clear
@@ -70,63 +116,63 @@ fail("Not Yet Implemented!")
   end
   
   def test_collect
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_collect!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_compact
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_compact!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_concat
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_dclone
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_delete
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_delete_at
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_delete_if
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_each
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_each_index
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_empty?
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_eql?
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_fetch
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_fill
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_first
@@ -140,56 +186,56 @@ fail("Not Yet Implemented!")
     assert_raise ArgumentError do 
       a.first(-1)
     end
-
+    
     assert_equal(nil, [].first, "First on an empty did not return nil")
   end
   
   def test_flatten
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_flatten!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_frozen?
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_hash
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_include?
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_index
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_indexes
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_indices
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_initialize_copy
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_insert
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_inspect
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_join
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_last
@@ -203,7 +249,7 @@ fail("Not Yet Implemented!")
     assert_raise ArgumentError do 
       a.last(-1)
     end
-
+    
     assert_equal(nil, [].last, "Last on an empty did not return nil")
   end
   
@@ -216,79 +262,79 @@ fail("Not Yet Implemented!")
   end
   
   def test_map
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_map!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_nitems
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_pack
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_pop
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_pretty_print
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_pretty_print_cycle
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_push
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_quote
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_rassoc
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_reject
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_reject!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_replace
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_reverse
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_reverse!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_reverse_each
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_rindex
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_select
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_shift
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_size
@@ -300,67 +346,67 @@ fail("Not Yet Implemented!")
   end
   
   def test_slice
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_slice!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_sort
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_sort!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_to_a
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_to_ary
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_to_s
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_to_yaml
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_transpose
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_uniq
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_uniq!
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_unshift
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_values_at
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_yaml_initialize
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_zip
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
   def test_bar
-fail("Not Yet Implemented!")
+    flunk("Not Yet Implemented!")
   end
   
 end
