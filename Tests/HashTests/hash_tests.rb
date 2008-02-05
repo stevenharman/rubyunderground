@@ -2,7 +2,63 @@ require "test/unit"
 require "rubygems"
 require "spec-unit"
 
-class HashTest < Test::Unit::TestCase
+class HashTests < Test::Unit::TestCase
+  include SpecUnit
+  
+  context 'when Hash is new' do
+    
+    def setup
+      @empty_hash = Hash.new
+    end
+    
+    def specify_equals_other_new_hash
+      @empty_hash.should_equal(Hash.new)
+    end
+    
+    def specify_doesnt_equal_hash_with_values
+      h2 = { :a => "first", :b => "second" }
+      @empty_hash.should_not_equal(h2)
+    end
+    
+    def specify_brackets_should_return_nil
+      @empty_hash[:blah].should_be_nil?
+    end
+    
+    def specify_default_should_be_nil
+      @empty_hash.default.should_be_nil?
+    end
+    
+  end
+  
+  context 'when Hash has content and default = :foo' do
+    
+    def setup
+      @my_hash = { :a => 'thing A', :b => 'thing B', :c => 3}
+      @my_hash.default = :foo
+    end
+    
+    def specify_doesnt_equal_new_hash
+      @my_hash.should_not_equal(Hash.new)
+    end
+    
+    def specify_should_equal_hash_with_same_keyvalue_pairs
+      other_hash = { :a => 'thing A', :b => 'thing B', :c => 3}
+      @my_hash.should_equal(other_hash)
+    end
+    
+    def specify_brackets_return_value_for_key
+      @my_hash[:b].should_equal "thing B"
+    end
+    
+    def specify_brackets_return_default_when_key_not_found
+      @my_hash['z'].should_equal :foo
+    end
+    
+    def specify_default_should_be_foo
+      @my_hash.default.should_equal :foo
+    end
+    
+  end
 
   def test_eq_eq
     
