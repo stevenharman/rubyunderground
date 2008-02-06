@@ -89,7 +89,18 @@ class ArrayTest < Test::Unit::TestCase
   end
   
   def test_brackets
-    flunk("Not Yet Implemented!")
+    a = [1,2,3,4,5]
+    assert_equal(1, a[0], "Indexing by a single fixnum failed")
+    assert_equal([1,2], a[0,2], "Indexing by a start and count failed")
+    assert_equal([2,3,4], a[1..3], "Indexing by a range failed")
+    assert_equal([4,5], a[3..9], "Indexing with partial matching range failed")
+    assert_equal(nil, a[6], "Indexing out of range didn't return nil")
+    assert_equal(nil, a[6,2], "Indexing out of range with a start/count didn't return nil")
+    assert_equal(nil, a[6..12], "Indexing out of range with a range didn't return nil")
+    assert_equal(nil, a[-7], "Indexing out of range with a negative didn't return nil")
+    assert_equal(4, a[-2], "Indexing with a negative failed")
+    assert_equal([3,4], a[-3,2], "Indexing with negative start and positive count failed")
+    assert_equal(nil, a[-3,-4], "Indexing with negative start and negative count failed")
   end
   
   def test_bracket_equals
