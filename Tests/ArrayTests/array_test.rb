@@ -104,19 +104,43 @@ class ArrayTest < Test::Unit::TestCase
   end
   
   def test_bracket_equals
-    flunk("Not Yet Implemented!")
-  end
-  
-  def test_abbrev
-    flunk("Not Yet Implemented!")
+    a = Array.new
+    a[4] = 4
+    assert_equal([nil,nil,nil,nil,4], a, "Setting the tail end of an array element failed")
+    a[0,1] = 0
+    assert_equal([0,nil,nil,nil,4], a, "Setting with a start and length failed")
+    a[1..2] = [1,2]
+    assert_equal([0,1,2,nil,4], a, "Setting with a range and array value failed")
+    a[-2]  = 3
+    assert_equal([0,1,2,3,4], a, "Setting with a negative index failed")
+    a[2] = nil
+    assert_equal([0,1,nil,3,4], a, "Setting to nil failed")
+    a[2,1] = nil
+    assert_equal([0,1,3,4], a, "Settnig to nil with an array did not delete")
+    assert_raise IndexError do
+      a[-123] = 1
+    end
   end
   
   def test_assoc
-    flunk("Not Yet Implemented!")
+    s1 = ["colors", "red", "blue", "green"] 
+    s2 = ["numbers", 1, 2, 3]
+    s3 = ["letters", "a", "b", "c"]
+    s4 = "non-sub"
+    a = [s1, s2, s3, s4]
+    
+    assert_equal(["letters", "a", "b", "c" ], a.assoc("letters"), "Association failed on array")  
+    assert_equal(["numbers", 1, 2, 3], a.assoc("numbers"), "Association on a sub array wit non-strings failed")    
+    assert_equal(nil, a.assoc("red"), "Association on a non-first element failed")    
+    assert_equal(nil, a.assoc("non-sub"), "Association on non-sub array failed" )
   end
   
   def test_at
-    flunk("Not Yet Implemented!")
+    a = [1,2,3,4,5]
+    assert_equal(1, a.at(0), "Array.at with a single fixnum failed")
+    assert_equal(nil, a.at(6), "Array.at with a positive out of range didn't return nil")
+    assert_equal(nil, a.at(-7), "Array.at with a negative out of range with a negative didn't return nil")
+    assert_equal(4, a.at(-2), "Array.at with a negative failed")
   end
   
   def test_clear
@@ -127,11 +151,25 @@ class ArrayTest < Test::Unit::TestCase
   end
   
   def test_collect
-    flunk("Not Yet Implemented!")
+    a = ["a","b","c"]
+    b = a.collect {|x| x+"!"}
+    assert_equal(["a!","b!","c!"], b, "Array collect failed")
+    assert_equal(["a","b","c"], a, "Array collect modified original")
+    
+    a = ["a"]
+    b = a.collect {|x| x+"!"}
+    assert_equal(["a!"], b, "Array collect on a single element failed")
+    
+    a = []
+    b = a.collect {|x| x+"!"}
+    assert_equal([], b, "Array collect on an empty array failed")
   end
   
   def test_collect!
-    flunk("Not Yet Implemented!")
+    a = ["a","b","c"]
+    b = a.collect! {|x| x+"!"}
+    assert_equal(["a!","b!","c!"], b, "Array collect! failed")
+    assert_equal(["a!","b!","c!"], a, "Array collect! didn't modify original")
   end
   
   def test_compact
@@ -417,7 +455,16 @@ class ArrayTest < Test::Unit::TestCase
   end
   
   def test_bar
-    flunk("Not Yet Implemented!")
+    a, b = ["a","b","c"], ["b", "c", "d"]
+    assert_equal(["a","b","c","d"], a|b, "Union of two arrays with two matches failed")
+    b = ["d","e","f"]
+    assert_equal(["a","b","c","d","e","f"], a|b, "Union of two disjoint arrays with failed")
+    b = ["a","b","c"]
+    assert_equal(["a","b","c"], a|b, "Union of two identical arrays failed")
+    b = []
+    assert_equal(["a","b","c"], a|b, "Union of an array with empty didn't produce self")
+    b = ["c","b","a"]
+    assert_equal(["a","b","c"], a|b, "Union of an array in reverse order didn't produce self")
   end
   
 end
