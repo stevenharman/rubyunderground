@@ -173,15 +173,28 @@ class ArrayTest < Test::Unit::TestCase
   end
   
   def test_compact
-    flunk("Not Yet Implemented!")
+    a = ["a", nil, "b", nil, "c"]
+    assert_equal(["a","b","c"], a.compact, "Array compact failed")
+    assert_equal(["a", nil, "b", nil, "c"], a, "Array compact modified original")
+    a = [nil, nil, nil]
+    assert_equal([], a.compact, "Array compact with all nils failed")
   end
   
   def test_compact!
-    flunk("Not Yet Implemented!")
+    a = ["a", nil, "b", nil, "c"]
+    assert_equal(["a","b","c"], a.compact!, "Array compact! failed")
+    assert_equal(["a", "b", "c"], a, "Array compact! modified original")
+    a = [nil, nil, nil]
+    assert_equal([], a.compact!, "Array compact! with all nils failed")
   end
   
   def test_concat
-    flunk("Not Yet Implemented!")
+    a = ["a", "b"]
+    b = ["c", "d"]
+    assert_equal(["a", "b", "c", "d"], a.concat(b), "Array concat failed")
+    assert_equal(["a", "b", "c", "d"], a, "Array concat did not change original")
+    assert_equal(["c", "d"], b.concat([]), "Concat with an empty param failed")
+    assert_equal(["c", "d"], [].concat(b), "Concat on an empty array failed")
   end
   
   def test_dclone
