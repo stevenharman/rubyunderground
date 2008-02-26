@@ -123,183 +123,183 @@ class HashTests < Test::Unit::TestCase
   end
   
   def test_default_proc
-    flunk('default_proc net tested')
+    flunk("Not Yet Implemented!")
   end
   
   def test_delete_if
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_each
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_each_key
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_each_pair
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_each_value
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_empty?
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_fetch
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_has_key?
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_has_value?
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_include?
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_index
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_indexes
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_indices
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_initialize_copy
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_inspect
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_invert
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_key?
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_keys
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_length
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_member?
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_merge
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_merge!
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_new
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_pretty_print
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_pretty_print_cycle
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_rehash
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_reject
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_reject!
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_replace
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_select
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_shift
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_size
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_size
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_sort
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_store
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_to_a
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_to_hash
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_to_s
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_to_yaml
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_update
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_value?
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_values
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_values_at
-    
+    flunk("Not Yet Implemented!")
   end
   
   def test_yaml_initialize
-    
+    flunk("Not Yet Implemented!")
   end
 
 end
