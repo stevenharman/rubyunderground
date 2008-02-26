@@ -42,17 +42,17 @@ class DateTest < Test::Unit::TestCase
  
  def test_year
    aDate = Date.new 2008,1,30
-   assert aDate.year == 2008
+   assert_equal(2008, aDate.year)
  end
  
  def test_month
    aDate = Date.new 2008,1,30
-   assert aDate.month == 1
+   assert_equal(1, aDate.month)
  end
  
   def test_day
    aDate = Date.new 2008,1,30
-   assert aDate.day == 30
+   assert_equal(30, aDate.day)
  end
  
  def test_nsIs
@@ -69,7 +69,7 @@ class DateTest < Test::Unit::TestCase
    
    jd = getJd 2008,1, 30
 
-   assert aDate.jd == jd
+   assert_equal(jd, aDate.jd)
  end
  
  def test_wday
@@ -80,20 +80,20 @@ class DateTest < Test::Unit::TestCase
    counter = 0
    start = Date.new(2008,1,30)
    start.upto(start.jd + 500) do |date|
-     assert start + counter == date
+     assert_equal(start + counter, date)
      counter = counter + 1
    end
-   assert(counter == 501)
+   assert_equal(501, counter)
  end
  
  def test_downto
    counter = 0
    start = Date.new(2008,1,30)
    start.downto(start.jd - 500) do |date|
-     assert(start - counter == date)
+     assert_equal(start - counter, date)
      counter = counter + 1
    end
-   assert(counter == 500)
+   assert_equal(500, counter)
  end
  
  def test_succ
@@ -137,7 +137,7 @@ class DateTest < Test::Unit::TestCase
    
  end
  
- def test_lesthanequal
+ def test_lessthanequal
    aDate = Date.new(2008,1,30)
    equalDate = Date.new(2008,1,30)
    otherDate = Date.new(2009,1,30)
@@ -148,7 +148,7 @@ class DateTest < Test::Unit::TestCase
  def test_equal
    aDate = Date.new(2008,1,30)
    equalDate = aDate
-   assert aDate == equalDate
+   assert_equal(equalDate, aDate)
  end
  
  def test_equals
@@ -250,12 +250,10 @@ class DateTest < Test::Unit::TestCase
 
  end
  
- def test_freeze
-
- end
- 
- def test_frozen?
-
+ def test_freeze_and_frozen
+	aDate = Date.new(2008,1,30)
+	assert(aDate.freeze.frozen?)
+	assert(!Date.new(2008,1,30).frozen?)
  end
  
  def test_gem
@@ -399,7 +397,7 @@ class DateTest < Test::Unit::TestCase
  
  def test_civil_to_jd
    #static method which converts a given gregorian date to the amount of julian days
-   assert Date.civil_to_jd(2008, 1, 30) == getJd(2008,1,30)
+   assert_equal(getJd(2008,1,30), Date.civil_to_jd(2008, 1, 30))
  end
  
  
