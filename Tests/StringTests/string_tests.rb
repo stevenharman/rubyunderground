@@ -101,42 +101,84 @@ class StringTest < Test::Unit::TestCase
 	end
 	                                                                  
 	def test_asterisk
-		flunk("Not Yet Implemented!")
+		a = "Ruby, "
+		assert_equal(a*4, "Ruby, Ruby, Ruby, Ruby, ")
 	end
 	                                                                       
 	def test_match
-		flunk("Not Yet Implemented!")
+		a = "hello world"
+		assert_equal(a.match(/(.)\1/)[0], 'll') #matches on all l's. Need better regex understanding
+		assert_nil(a.match('todd'))
 	end
-	                                                                   
-	def test_grep
-		flunk("Not Yet Implemented!")
+	                                                                 
+	def test_chomp
+		a = "Ruby\r\n"
+		b = "Ruby\n"
+		assert_equal(a.chomp, "Ruby")
+		assert_equal(b.chomp, "Ruby")
 	end
 	                                                                    
 	def test_chomp_bang
-		flunk("Not Yet Implemented!")
+		a = "Ruby\r\n"
+		b = "Ruby\n"
+		c = "Ruby"
+		assert_equal(a.chomp, "Ruby")
+		assert_equal(b.chomp, "Ruby")
+		assert_nil(c.chomp)
 	end
 	                                                                  
 	def test_plus
-		flunk("Not Yet Implemented!")
+		a = "hello"
+		b = " world"
+		assert_equal(a+b, "hello world")
+	end
+	
+	def test_next
+		a = "tk421"
+		b = "Ruby"
+		assert_equal(a.next, "tk422")
+		assert_equal(b.next, "Rubz")
 	end
 	                                                                       
 	def test_next_bang
-		flunk("Not Yet Implemented!")
+		a = "tk421"
+		b = "Ruby"
+		assert_equal(a.next, "tk422")
+		assert_equal(b.next, "Rubz")
+	end
+	                                                                 
+	def test_succ #same as str.next
+		a = "tk421"
+		b = "Ruby"
+		assert_equal(a.next, "tk422")
+		assert_equal(b.next, "Rubz")
+	end
+	                                                                   
+	def test_succ_bang #same as str.next!
+		a = "tk421"
+		b = "Ruby"
+		assert_equal(a.next, "tk422")
+		assert_equal(b.next, "Rubz")
 	end
 	                                                                   
 	def test_swapcase
-		flunk("Not Yet Implemented!")
-	end
-	                                                                
-	def test_ljust
-		flunk("Not Yet Implemented!")
-	end
-	                                                                   
-	def test_to_i
-		flunk("Not Yet Implemented!")
+		a = "ThE DeUcE"
+		assert_equal(a.swapcase, "tHe dEuCe")
 	end
 	                                                                    
 	def test_swapcase_bang
+		a = "ThE DeUcE"
+		assert_equal(a.swapcase, "tHe dEuCe")
+	end
+	                                                                
+	def test_ljust
+		a = "Ruby"
+		assert_equal(a.ljust(2), "Ruby")
+		assert_equal(a.ljust(6), "Ruby  ")
+		assert_equal(a.ljust(10, " Rox"), "Ruby Rox R")
+	end
+	                                                                   
+	def test_to_i
 		flunk("Not Yet Implemented!")
 	end
 	
@@ -215,10 +257,6 @@ class StringTest < Test::Unit::TestCase
 	def test_member_bool
 		flunk("Not Yet Implemented!")
 	end
-	                                                                 
-	def test_succ
-		flunk("Not Yet Implemented!")
-	end
 	                                                                    
 	def test_find
 		flunk("Not Yet Implemented!")
@@ -281,10 +319,6 @@ class StringTest < Test::Unit::TestCase
 	end
 	                                                                  
 	def test_entries
-		flunk("Not Yet Implemented!")
-	end
-	                                                                 
-	def test_chomp
 		flunk("Not Yet Implemented!")
 	end
 	                                                                   
@@ -416,10 +450,6 @@ class StringTest < Test::Unit::TestCase
 		flunk("Not Yet Implemented!")
 	end
 	                                                                   
-	def test_succ_bang
-		flunk("Not Yet Implemented!")
-	end
-	                                                                   
 	def test_downcase
 		flunk("Not Yet Implemented!")
 	end
@@ -449,10 +479,6 @@ class StringTest < Test::Unit::TestCase
 	end
 	
 	def test_greater_than_equal
-		flunk("Not Yet Implemented!")
-	end
-	
-	def test_next
 		flunk("Not Yet Implemented!")
 	end
 	
