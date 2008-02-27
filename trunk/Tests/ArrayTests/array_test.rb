@@ -197,10 +197,6 @@ class ArrayTest < Test::Unit::TestCase
     assert_equal(["c", "d"], [].concat(b), "Concat on an empty array failed")
   end
   
-  def test_dclone
-    flunk("Not Yet Implemented!")
-  end
-  
   def test_delete
     flunk("Not Yet Implemented!")
   end
